@@ -1,0 +1,76 @@
+
+fieldset {
+    width: fit-content;
+}
+
+.carouseledit img{
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.captionedit{
+    top: 42%;
+    bottom: 50%;
+    /* left: -45% !important; */
+    text-align: left !important;
+}
+
+h1{
+    font-size: 64px !important;
+}
+
+p{
+    font-size: 24px !important;
+}
+
+.titlemenuedit{
+   padding: 200px 100px 100px 100px !important;
+   background-color: #d65106;
+   color: white;
+   /*diakalin*/
+   width: 100%;
+   margin-left: -10%;
+}
+
+.why-text{
+    text-align: center;
+}
+
+/* .tabedit{
+    background: #d17a49 !important;
+} */
+
+.img-fluid{ 
+    border-radius: 5px;
+}
+
+.align-items-start .nav-pills .nav-link.active{
+	background: #d65106;
+}
+.align-items-start .nav-pills .nav-link{
+    margin-bottom: 8px;
+    color: black;
+}
+.align-items-start .nav-pills .nav-link:hover{
+	background: #d65106;
+	color: #ffffff;
+}
+
+#body-profile {
+    border-radius: 10px;
+    margin-top: 36px;
+    margin-left: 36px;
+    margin-right: 36px;
+    padding-top: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: whitesmoke;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
+
+}
+
+footer{
+    background-color: #d65106;
+}
+
