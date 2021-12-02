@@ -82,7 +82,7 @@
             logout() {
                 localStorage.removeItem('id');
                 localStorage.removeItem('token');
-                location.reload();
+                // location.reload();
                 this.$router.push({
                     name: 'Index',
                 });

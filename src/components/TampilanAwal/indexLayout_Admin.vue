@@ -16,6 +16,9 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav" style="margin: 0 0 0 auto;">
                         <li class="nav-item" style="margin-left: 16px">
+                            <a class="nav-link" @click="login">Halaman Utama</a>
+                        </li>
+                        <li class="nav-item" style="margin-left: 16px">
                             <a class="nav-link" @click="login">Login</a>
                         </li>
                     </ul>

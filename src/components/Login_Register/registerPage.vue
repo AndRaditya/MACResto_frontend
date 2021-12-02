@@ -154,7 +154,7 @@
                         this.load = false;
                         this.clear();
                         this.$router.push({
-                            name: 'Dashboard',
+                            name: 'Index',
                         });
                     }).catch(error => {
                         this.error_message = error.response.data.message;

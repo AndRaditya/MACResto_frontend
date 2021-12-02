@@ -50,10 +50,11 @@
                             </div>
                         </v-card-text>
                     </v-card>
-                    <v-snackbar v-model="snackbar" :color="color" timeout="2000" bottom>{{ error_message}}</v-snackbar>
+                    
                 </v-flex>
             </v-layout>
         </v-container>
+        <v-snackbar v-model="snackbar" :color="color" timeout="2000" bottom>{{ error_message}}</v-snackbar>
     </main>
 </template>
 
@@ -113,7 +114,7 @@
                             this.load = false;
                             this.clear();
                             this.$router.push({
-                                name: 'Dashboard',
+                                name: 'DashboardAdmin',
                             });
                         }).catch(error => {
                             this.error_message = error.response.data.message;
@@ -122,7 +123,10 @@
                             localStorage.removeItem('token');
                             this.load = false;
                         })
+                    }else{
+                        this.error_message = 'Hanya Boleh Admin';
                     }
+                    
                 }
             },
             clear() {
