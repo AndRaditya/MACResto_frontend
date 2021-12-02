@@ -65,7 +65,7 @@
                 <v-card-title>
                     <span class="headline">Warning!</span>
                 </v-card-title>
-                <v-card-text>Anda yakin ingin menghapus kelas ini?</v-card-text>
+                <v-card-text>Anda yakin ingin menghapus profil ini?</v-card-text>
                 <v-card-action>
                     <v-spacer></v-spacer>
                     <v-btn color="blue darken-1" text @click="dialogConfirm= false">Cancel</v-btn>
@@ -80,7 +80,7 @@
 
 <script>
     export default {
-        name: "List",
+        name: "ProfileAdmin",
         data() {
             return {
                 inputType: 'Tambah',
@@ -96,15 +96,19 @@
                         text: "Nama Lengkap",
                         align: "start",
                         sortable: true,
-                        value: 'name'
+                        value: 'namaLengkap'
                     },
                     {
                         text: "Email",
                         value: 'email'
                     },
                     {
-                        text: "Password",
-                        value: 'password'
+                        text: "Username",
+                        value: 'username'
+                    },
+                    {
+                        text: "Nomor Telepon",
+                        value: 'noTelp'
                     },
                     {
                         text: "Actions",
@@ -143,9 +147,10 @@
             },
             //simpan data
             save() {
-                this.user.append('name', this.form.name);
+                this.user.append('namaLengkap', this.form.namaLengkap);
                 this.user.append('email', this.form.email);
-                this.user.append('password', this.form.password);
+                this.user.append('username', this.form.username);
+                this.user.append('noTelp', this.form.noTelp);
 
                 var url = this.$api + '/user/'
                 this.load = true;
@@ -171,9 +176,10 @@
             //update data
             update() {
                 let newData = {
-                    name: this.form.name,
+                    namaLengkap: this.form.namaLengkap,
                     email: this.form.email,
-                    password: this.form.password
+                    username: this.form.username,
+                    noTelp: this.form.noTelp
                 };
                 var url = this.$api + '/user/' + this.editId;
                 this.load = true;
@@ -224,9 +230,10 @@
             editHandler(item) {
                 this.inputType = "Ubah";
                 this.editId = item.id;
-                this.form.name = item.name;
+                this.form.namaLengkap = item.namaLengkap;
                 this.form.email = item.email;
-                this.form.password = item.password;
+                this.form.username = item.username;
+                this.form.noTelp = item.noTelp;
                 this.dialogEdit = true;
             },
             deleteHandler(id) {

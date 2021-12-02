@@ -2,11 +2,11 @@
     <div class="dashboard">
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-4 mb-5 bg-white navbaredit">
             <div class="container-fluid">
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <a @click="kembaliDashboard" style="text-decoration: none;">
                         <img src="./Images/restaurant (1).png" style="width: 64px; height:64px;"
                             align="left">
-                        <h2 style="color: black; margin-top: 12px; margin-left: -30px; font-weight: bold;"><small>MAC Resto</small></h2>
+                        <h2 style="color: black; margin-top: 12px; margin-left: -30px; font-weight: bold;"><small>MAC Resto - Admin</small></h2>
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -15,12 +15,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav" style="margin: 0 0 0 auto;">
-                        <!-- <li class="nav-item active a">
-                            <a class="nav-link" href="./Beranda.php">Beranda</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./Menu/Menu.php">Menu</a>
-                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link"  @click="btnProfil">Profil</a>
                         </li>
@@ -63,16 +57,16 @@
 
 <script>
     export default {
-        name: "Dashboard",
+        name: "DashboardAdmin",
         data() {
             return {
                 items: [{
-                        title: "Dashboard",
-                        to: "/dashboard"
+                        title: "DashboardAdmin",
+                        to: "/dashboard_admin"
                     },
                     {
-                        title: "Profile",
-                        to: "/profile"
+                        title: "ProfileAdmin",
+                        to: "/profileAdmin"
                     },
                     // {title: "Course", to: "/course"},
                 ],
@@ -89,12 +83,12 @@
             },
             btnProfil() {
                 this.$router.push({
-                    name: 'Profile',
+                    name: 'ProfileAdmin',
                 });
             },
             kembaliDashboard() {
                 this.$router.push({
-                    name: 'Dashboard',
+                    name: 'DashboardAdmin',
                 });
             }
         }

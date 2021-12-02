@@ -30,6 +30,25 @@ const router = new VueRouter({
             ],
         },
         {
+            path: '/dashboard_admin',
+            meta: { requiresAuth: true},
+            component: importComponent('DashboardLayout_Admin'),
+            children: [
+                {
+                    path: '/dashboard_admin',
+                    name: 'DashboardAdmin',
+                    meta: { title: 'DashboardAdmin' },
+                    component: importComponent('Dashboard'),
+                },
+                {
+                    path: '/profileAdmin',
+                    name: 'ProfileAdmin',
+                    meta: { title: 'ProfileAdmin' },
+                    component: importComponent('Profile/profilePageAdmin'),
+                },
+            ],
+        },
+        {
             path: '/index',
             meta: { requiresAuth: false},
             component: importComponent('TampilanAwal/indexLayout'),
@@ -51,6 +70,25 @@ const router = new VueRouter({
                     name: 'Register',
                     meta: { title: 'Register' },
                     component: importComponent('Login_Register/registerPage'),
+                },
+            ],
+        },     
+        {
+            path: '/index_admin',
+            meta: { requiresAuth: false},
+            component: importComponent('TampilanAwal/indexLayout_Admin'),
+            children: [
+                {
+                    path: '/index_admin',
+                    name: 'IndexAdmin',
+                    meta: { title: 'IndexAdmin' },
+                    component: importComponent('TampilanAwal/indexDashboard'),
+                },
+                {
+                    path: '/login_admin',
+                    name: 'LoginAdmin',
+                    meta: { title: 'LoginAdmin' },
+                    component: importComponent('Login_Register/loginPageAdmin'),
                 },
             ],
         },     

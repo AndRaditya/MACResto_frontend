@@ -4,7 +4,7 @@
             <v-layout flex align-center justify-center>
                 <v-flex xs12 sm6 elevation-6>
                     <v-card>
-                        <h1 style="font-family: Anton, sans-serif; padding-top: 30px">Masuk Admin</h1>
+                        <h1 style="font-family: Anton, sans-serif; padding-top: 50px">Masuk Admin</h1>
                         <img src="../Images/login.jpeg" style="width: 150px" />
                         <v-card-text class="pt-4">
                             <div>
@@ -64,7 +64,7 @@
   
     .posisinya {
         position: absolute;
-        top: 20px;
+        margin-top: 100px;
         left: 0;
         right: 0;
     }
