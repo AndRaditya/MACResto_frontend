@@ -16,7 +16,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav" style="margin: 0 0 0 auto;">
                         <li class="nav-item" style="margin-left: 16px">
-                            <a class="nav-link" @click="login">Halaman Utama</a>
+                            <a class="nav-link" @click="halamanUtama">Halaman Utama</a>
                         </li>
                         <li class="nav-item" style="margin-left: 16px">
                             <a class="nav-link" @click="login">Login</a>
@@ -68,6 +68,10 @@
                         title: "LoginAdmin",
                         to: "/login_admin"
                     },
+                    {
+                        title: "Index",
+                        to: "/index"
+                    },
                     // {title: "Course", to: "/course"},
                 ],
             };
@@ -76,6 +80,11 @@
             login() {
                 this.$router.push({
                     name: 'LoginAdmin',
+                });
+            },
+            halamanUtama() {
+                this.$router.push({
+                    name: 'Index',
                 });
             },
             kembaliDashboard() {

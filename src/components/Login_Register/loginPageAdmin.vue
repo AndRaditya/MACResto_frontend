@@ -36,16 +36,6 @@
                                      <v-layout justify-center style="margin-top: 20px">
                                         <v-btn @click="clear" class="grey darken-3 white--text">Clear</v-btn>
                                     </v-layout>
-
-                                    <v-layout justify-center style="margin-top: 20px">
-                                        <span class="d-table-cell" style="font-size: 12px">Belum punya akun?</span>
-                                        <a class="text-start d-table-cell forgot" @click="register"
-                                            style="width: 111px; color: var(--bs-blue)">
-                                            <span style="text-decoration: underline; margin: 4px"> Daftar
-                                                Disini!</span>
-                                        </a>
-                                    </v-layout>
-
                                 </v-form>
                             </div>
                         </v-card-text>
@@ -91,7 +81,7 @@
                 ]
             };
         },
-         mounted(){
+        mounted(){
                 this.showVerified();
             },
         methods: {

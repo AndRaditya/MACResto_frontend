@@ -81,11 +81,13 @@
                 this.$router.push({
                     name: 'Login',
                 });
+   
             },
             register() {
                 this.$router.push({
                     name: 'Register',
                 });
+           
             },
             kembaliDashboard() {
                 this.$router.push({

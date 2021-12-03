@@ -91,6 +91,7 @@
                 this.$router.push({
                     name: 'Profile',
                 });
+                
             },
             kembaliDashboard() {
                 this.$router.push({
