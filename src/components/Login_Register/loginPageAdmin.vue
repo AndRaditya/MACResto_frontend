@@ -91,6 +91,9 @@
                 ]
             };
         },
+         mounted(){
+                this.showVerified();
+            },
         methods: {
             submit() {
                 if (this.$refs.form.validate()) {
@@ -124,9 +127,19 @@
                             this.load = false;
                         })
                     }else{
-                        this.error_message = 'Hanya Boleh Admin';
+                        this.$router.push({
+                                name: 'Index',
+                            });
                     }
                     
+                }
+            },
+            showVerified(){
+                if(this.$route.query.verified == 'success'){
+                    this.success = true;
+                    this.router.push(
+                        '/login'
+                    );
                 }
             },
             clear() {
