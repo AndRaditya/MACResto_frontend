@@ -27,8 +27,32 @@ const router = new VueRouter({
                     meta: { title: 'Profile' },
                     component: importComponent('Profile/profilePage'),
                 },
+                {
+                    path: '/menu',
+                    name: 'Menu',
+                    meta: { title: 'Menu' },
+                    component: importComponent('Menu/menuPage'),
+                },
             ],
         },
+
+
+        {
+            path: '/listPesanan',
+            name: 'ListPesanan',
+            meta: { requiresAuth: true},
+            component: importComponent('DashboardLayout2'),
+            children: [
+                {
+                    path: '/review',
+                    name: 'Review',
+                    meta: { title: 'Review' },
+                    component: importComponent('Review/reviewPage'),
+                },
+            ],
+        },
+
+
         {
             path: '/index',
             meta: { requiresAuth: false},

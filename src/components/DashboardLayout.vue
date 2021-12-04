@@ -21,6 +21,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./Menu/Menu.php">Menu</a>
                         </li> -->
+                        <li class="nav-item" style="margin-left: 16px">
+                            <a class="nav-link" @click="btnMenu">Menu</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link"  @click="btnProfil">Profil</a>
                         </li>
@@ -87,6 +90,11 @@
             btnProfil() {
                 this.$router.push({
                     name: 'Profile',
+                });
+            },
+            btnMenu() {
+                this.$router.push({
+                    name: 'Menu',
                 });
             },
             kembaliDashboard() {
