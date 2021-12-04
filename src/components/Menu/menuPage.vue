@@ -1,24 +1,22 @@
 <template>
-    <v-main class="list" >
-        
+    <v-main class="list">
+
         <h3 class="text-h3 font-weight-medium mb-5" style="margin-top: 150px"></h3>
         <v-container fluid fill-height class="posisinya" style="margin-top: -90px">
 
-             <div class="row">
-                <v-card
-                    color="#D65106"
-                    height="150px">
-                
+            <div class="row">
+                <v-card color="#D65106" height="150px">
+
                     <v-list-item-content>
-                        <v-list-item-title class="text-h5 mb-1" style="color: #FFFFFF;margin-top: 30px"> MENU</v-list-item-title>
+                        <v-list-item-title class="text-h5 mb-1" style="color: #FFFFFF;margin-top: 30px"> MENU
+                        </v-list-item-title>
                         <v-list-item-subtitle style="color: #FFFFFF">Pilihan menu yang tersedia</v-list-item-subtitle>
                     </v-list-item-content>
                 </v-card>
             </div>
 
             <div class="d-flex align-items-start" style="margin-top: 60px">
-                <div class="nav flex-column nav-pills me-2" id="v-pills-tab" role="tablist"
-                    aria-orientation="vertical">
+                <div class="nav flex-column nav-pills me-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <!-- <button class="nav-link active" id="v-pills-semua-tab" data-bs-toggle="pill"
                         data-bs-target="#v-pills-semua" type="button" role="tab" aria-controls="v-pills-home"
                         aria-selected="true" style="background-color: #D65106">Semua</button>
@@ -34,13 +32,12 @@
                     aria-selected="false">Pesan</button>
                 </a> -->
                     <hr>
-                    
+
                     <button class="btn btn-light" style="background-color: #d17a49; 
-                    color:white; outline-color: #d17a49; width: 140px; height: 40px;"
-                    @click="btnReview">
+                    color:white; outline-color: #d17a49; width: 140px; height: 40px;" @click="btnReview">
                         Pesan Disini
                     </button>
-                
+
                 </div>
 
                 <div>
@@ -146,33 +143,31 @@
                         </v-row>
                     </v-container>
                 </div>
-
-           
             </div>
-        
+<!-- 
 
-    <v-container fluid>
-        <div style="background-color: #C44C06; margin-top: 60px; height: 150px">
+            <v-container fluid>
+                <div style="background-color: #C44C06; margin-top: 60px; height: 150px">
 
-                <div class="row" style="padding-top: 32px;">
-                    <div class="col-lg-12" align="center">
-                        <p class="d-flex justify-content-center" align="center" style="color: white;">&copy; MAC
-                            Resto
-                        </p>
-                        <div style="color: white; font-size: 14px; font-family: 'Segoe UI';">
-                            Made with Sweat and Blood.
+                    <div class="row" style="padding-top: 32px;">
+                        <div class="col-lg-12" align="center">
+                            <p class="d-flex justify-content-center" align="center" style="color: white;">&copy; MAC
+                                Resto
+                            </p>
+                            <div style="color: white; font-size: 14px; font-family: 'Segoe UI';">
+                                Made with Sweat and Blood.
+                            </div>
                         </div>
                     </div>
-                </div>           
-        </div>
-    </v-container>       
+                </div>
+            </v-container> -->
         </v-container>
     </v-main>
 </template>
 
 <style>
     @import url("https://fonts.googleapis.com/css?family=Jolly%20Lodger");
-   
+
     .grey--text {
         font-family: "Jolly Lodger";
     }
@@ -267,7 +262,7 @@
 
             btnReview() {
                 this.$router.push({
-                    name: 'ListPesanan',
+                    name: 'Review',
                 });
             },
 

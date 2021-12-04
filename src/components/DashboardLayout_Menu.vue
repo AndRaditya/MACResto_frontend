@@ -6,7 +6,7 @@
                     <a @click="kembaliDashboard" style="text-decoration: none;">
                         <img src="./Images/restaurant (1).png" style="width: 64px; height:64px;"
                             align="left">
-                        <h2 style="color: black; margin-top: 12px; margin-left: -30px; font-weight: bold;"><small>MAC Resto</small></h2>
+                        <h3 style="color: black; margin-top: 12px; margin-left: -30px; font-weight: bold;"><small>MAC Resto - Menu</small></h3>
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -15,27 +15,18 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav" style="margin: 0 0 0 auto;">
-                        <!-- <li class="nav-item active a">
-                            <a class="nav-link" href="./Beranda.php">Beranda</a>
-                        </li> -->
                         <li class="nav-item" style="margin-left: 16px">
-                            <a class="nav-link" @click="btnMenu">Menu</a>
+                            <a class="nav-link" @click="btnPesanMenu">Pesan Menu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" @click="btnReservasi">Reservasi</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"  @click="btnProfil">Profil</a>
-                        </li>
-                        <li class="nav-item active" style="margin-left: 16px">
-                            <a class="nav-link" @click="logout">Keluar</a>
+                            <a class="nav-link"  @click="btnReview">Review</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <div class="fullheight pa-5">
+        <div class="fullheight pa-5" style="margin-top: 150px; padding-top:150px">
             <router-view></router-view>
         </div>
 
@@ -66,46 +57,38 @@
 
 <script>
     export default {
-        name: "Dashboard",
+        name: "DashboardMenu",
         data() {
             return {
                 items: [{
-                        title: "Dashboard",
-                        to: "/dashboard"
+                        title: "DashboardMenu",
+                        to: "/dashboard_menu"
                     },
+                    // {
+                    //     title: "Profile",
+                    //     to: "/profile"
+                    // },
                     {
-                        title: "Profile",
-                        to: "/profile"
+                        title: "Review",
+                        to: "/review"
                     },
                     // {title: "Course", to: "/course"},
                 ],
             };
         },
         methods: {
-            logout() {
-                localStorage.removeItem('id');
-                localStorage.removeItem('token');
-                // location.reload();
+            btnPesanMenu() {
                 this.$router.push({
-                    name: 'Index',
-                });
-            },
-            btnProfil() {
-                this.$router.push({
-                    name: 'Profile',
+                    name: 'PesanMenu',
                 });
                 
             },
-            btnReservasi() {
+            btnReview() {
                 this.$router.push({
-                    name: 'Reservasi',
+                    name: 'Review',
                 });
             },    
-            btnMenu() {
-                this.$router.push({
-                    name: 'Menu',
-                });
-            },
+
             kembaliDashboard() {
                 this.$router.push({
                     name: 'Dashboard',

@@ -35,23 +35,25 @@ const router = new VueRouter({
                 },
             ],
         },
-
-
         {
-            path: '/listPesanan',
-            name: 'ListPesanan',
+            path: '/dashboard_menu',
             meta: { requiresAuth: true},
-            component: importComponent('DashboardLayout2'),
+            component: importComponent('DashboardLayout_Menu'),
             children: [
-                {
+                 {
                     path: '/review',
                     name: 'Review',
                     meta: { title: 'Review' },
                     component: importComponent('Review/reviewPage'),
                 },
+                {
+                    path: '/dashboard_menu',
+                    name: 'DashboardMenu',
+                    meta: { title: 'DashboardMenu' },
+                    component: importComponent('Dashboard'),
+                },
             ],
         },
-
 
         {
             path: '/dashboard_admin',
@@ -72,6 +74,7 @@ const router = new VueRouter({
                 },
             ],
         },
+
         {
             path: '/index',
             meta: { requiresAuth: false},
