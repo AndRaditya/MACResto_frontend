@@ -17,12 +17,12 @@
                     <ul class="navbar-nav" style="margin: 0 0 0 auto;">
                         <!-- <li class="nav-item active a">
                             <a class="nav-link" href="./Beranda.php">Beranda</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./Menu/Menu.php">Menu</a>
                         </li> -->
                         <li class="nav-item" style="margin-left: 16px">
                             <a class="nav-link" @click="btnMenu">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" @click="btnReservasi">Reservasi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"  @click="btnProfil">Profil</a>
@@ -96,10 +96,19 @@
                 });
                 
             },
+<<<<<<< HEAD
+            btnReservasi() {
+                this.$ro
+                    name: 'Profile',
+                });
+                
+                
+=======
             btnMenu() {
                 this.$router.push({
                     name: 'Menu',
                 });
+>>>>>>> 0f3a1de0b25512b00d586b2c40bb53a7e03845f9
             },
             kembaliDashboard() {
                 this.$router.push({
