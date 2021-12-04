@@ -1,12 +1,12 @@
 <template>
-    <div class="index">
+    <div class="dashboard">
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-4 mb-5 bg-white navbaredit">
             <div class="container-fluid">
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <a @click="kembaliDashboard" style="text-decoration: none;">
-                        <img src="../Images/restaurant (1).png" style="width: 64px; height:64px;"
+                        <img src="./Images/restaurant (1).png" style="width: 64px; height:64px;"
                             align="left">
-                        <h2 style="color: black; margin-top: 12px; margin-left: -30px; font-weight: bold;"><small>MAC Resto</small></h2>
+                        <h2 style="color: black; margin-top: 12px; margin-left: -30px; font-weight: bold;"><small>MAC Resto - Admin</small></h2>
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -16,10 +16,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav" style="margin: 0 0 0 auto;">
                         <li class="nav-item">
-                            <a class="nav-link"  @click="register">Register</a>
+                            <a class="nav-link"  @click="btnProfil">Profil</a>
                         </li>
-                        <li class="nav-item" style="margin-left: 16px">
-                            <a class="nav-link" @click="login">Login</a>
+                        <li class="nav-item active" style="margin-left: 16px">
+                            <a class="nav-link" @click="logout">Keluar</a>
                         </li>
                     </ul>
                 </div>
@@ -57,41 +57,39 @@
 
 <script>
     export default {
-        name: "Index",
+        name: "DashboardAdmin",
         data() {
             return {
                 items: [{
-                        title: "Index",
-                        to: "/index"
+                        title: "DashboardAdmin",
+                        to: "/dashboard_admin"
                     },
                     {
-                        title: "Register",
-                        to: "/register"
-                    },
-                    {
-                        title: "Login",
-                        to: "/login"
+                        title: "ProfileAdmin",
+                        to: "/profileAdmin"
                     },
                     // {title: "Course", to: "/course"},
                 ],
             };
         },
         methods: {
-            login() {
+            logout() {
+                localStorage.removeItem('id');
+                localStorage.removeItem('token');
+                // location.reload();
                 this.$router.push({
-                    name: 'Login',
+                    name: 'IndexAdmin',
                 });
-   
             },
-            register() {
+            btnProfil() {
                 this.$router.push({
-                    name: 'Register',
+                    name: 'ProfileAdmin',
                 });
-           
+               
             },
             kembaliDashboard() {
                 this.$router.push({
-                    name: 'Index',
+                    name: 'DashboardAdmin',
                 });
             }
         }

@@ -90,6 +90,9 @@
                 ]
             };
         },
+        mounted(){
+                this.showVerified();
+            },
         methods: {
             submit() {
                 if (this.$refs.form.validate()) {
@@ -122,6 +125,14 @@
                         localStorage.removeItem('token');
                         this.load = false;
                     })
+                }
+            },
+            showVerified(){
+                if(this.$route.query.verified == 'success'){
+                    this.success = true;
+                    this.router.push(
+                        '/login'
+                    );
                 }
             },
             clear() {

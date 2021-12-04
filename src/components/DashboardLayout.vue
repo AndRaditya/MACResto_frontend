@@ -85,12 +85,16 @@
             logout() {
                 localStorage.removeItem('id');
                 localStorage.removeItem('token');
-                location.reload();
+                // location.reload();
+                this.$router.push({
+                    name: 'Index',
+                });
             },
             btnProfil() {
                 this.$router.push({
                     name: 'Profile',
                 });
+                
             },
             btnMenu() {
                 this.$router.push({

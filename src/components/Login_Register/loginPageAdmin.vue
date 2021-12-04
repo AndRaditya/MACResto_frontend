@@ -4,7 +4,7 @@
             <v-layout flex align-center justify-center>
                 <v-flex xs12 sm6 elevation-6>
                     <v-card>
-                        <h1 style="font-family: Anton, sans-serif; padding-top: 30px">Masuk Admin</h1>
+                        <h1 style="font-family: Anton, sans-serif; padding-top: 50px">Masuk Admin</h1>
                         <img src="../Images/login.jpeg" style="width: 150px" />
                         <v-card-text class="pt-4">
                             <div>
@@ -36,24 +36,15 @@
                                      <v-layout justify-center style="margin-top: 20px">
                                         <v-btn @click="clear" class="grey darken-3 white--text">Clear</v-btn>
                                     </v-layout>
-
-                                    <v-layout justify-center style="margin-top: 20px">
-                                        <span class="d-table-cell" style="font-size: 12px">Belum punya akun?</span>
-                                        <a class="text-start d-table-cell forgot" @click="register"
-                                            style="width: 111px; color: var(--bs-blue)">
-                                            <span style="text-decoration: underline; margin: 4px"> Daftar
-                                                Disini!</span>
-                                        </a>
-                                    </v-layout>
-
                                 </v-form>
                             </div>
                         </v-card-text>
                     </v-card>
-                    <v-snackbar v-model="snackbar" :color="color" timeout="2000" bottom>{{ error_message}}</v-snackbar>
+                    
                 </v-flex>
             </v-layout>
         </v-container>
+        <v-snackbar v-model="snackbar" :color="color" timeout="2000" bottom>{{ error_message}}</v-snackbar>
     </main>
 </template>
 
@@ -64,7 +55,7 @@
   
     .posisinya {
         position: absolute;
-        top: 20px;
+        margin-top: 100px;
         left: 0;
         right: 0;
     }
@@ -90,6 +81,9 @@
                 ]
             };
         },
+        mounted(){
+                this.showVerified();
+            },
         methods: {
             submit() {
                 if (this.$refs.form.validate()) {
@@ -113,7 +107,7 @@
                             this.load = false;
                             this.clear();
                             this.$router.push({
-                                name: 'Dashboard',
+                                name: 'DashboardAdmin',
                             });
                         }).catch(error => {
                             this.error_message = error.response.data.message;
@@ -122,7 +116,20 @@
                             localStorage.removeItem('token');
                             this.load = false;
                         })
+                    }else{
+                        this.$router.push({
+                                name: 'Index',
+                            });
                     }
+                    
+                }
+            },
+            showVerified(){
+                if(this.$route.query.verified == 'success'){
+                    this.success = true;
+                    this.router.push(
+                        '/login'
+                    );
                 }
             },
             clear() {
