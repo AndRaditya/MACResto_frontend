@@ -17,10 +17,10 @@
                     <ul class="navbar-nav" style="margin: 0 0 0 auto;">
                         <!-- <li class="nav-item active a">
                             <a class="nav-link" href="./Beranda.php">Beranda</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./Menu/Menu.php">Menu</a>
                         </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" @click="btnReservasi">Reservasi</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link"  @click="btnProfil">Profil</a>
                         </li>
@@ -91,6 +91,13 @@
                 this.$router.push({
                     name: 'Profile',
                 });
+                
+            },
+            btnReservasi() {
+                this.$ro
+                    name: 'Profile',
+                });
+                
                 
             },
             kembaliDashboard() {
