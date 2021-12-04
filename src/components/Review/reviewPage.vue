@@ -1,80 +1,83 @@
 <template>
   <v-main class="list">
     <h3 class="text-h3" font-weight-medium mb-5>Reviews</h3>
- 
-      <v-card-title>
-        <v-spacer></v-spacer>
 
-        <v-btn color="success" dark @click="dialog = true"> Tambah</v-btn>
-      </v-card-title>
+    <v-card-title>
+      <v-spacer></v-spacer>
 
-      <v-data-table :headers="headers" :items="reviews" :search="search">
-        <template v-slot:[`item`]="{ item }" class="col-sm">
-          <v-card
-            color="#CACACA"
-            dark
-            max-width="850"
-            style="margin: 30px"
-            shaped
-            outlined
-          >
-            <v-card-title>
-              <v-icon color="#FFFFFF" large left> </v-icon>
-              <span class="text-h5 font-weight-light">{{
-                item.email_review
-              }}</span>
-            </v-card-title>
+      <v-btn color="success" dark @click="dialog = true"> Tambah</v-btn>
+    </v-card-title>
 
-            <v-card-text class="text-h6 font-weight-bold">
-              {{ item.deskripsi_review }}
-            </v-card-text>
+    <v-data-table :headers="headers" :items="reviews" :search="search">
+      <template v-slot:[`item`]="{ item }" class="col-sm">
+        <v-card
+          color="#CACACA"
+          dark
+          max-width="850"
+          style="margin: 30px"
+          shaped
+          outlined
+        >
+          <v-card-title>
+            <v-icon color="#FFFFFF" large left> </v-icon>
+            <span class="text-h5 font-weight-light">{{
+              item.email_review
+            }}</span>
+          </v-card-title>
 
-            <div>
-              <v-rating
-                v-model="item.star_review"
-                color="yellow darken-3"
-                background-color="yellow darken-3"
-                half-increments
-                large
-                empty-icon="☆"
+          <v-card-text class="text-h6 font-weight-bold">
+            {{ item.deskripsi_review }}
+          </v-card-text>
+
+          <div>
+            <v-rating
+              v-model="item.star_review"
+              color="yellow darken-3"
+              background-color="yellow darken-3"
+              half-increments
+              large
+              empty-icon="☆"
               full-icon="★"
-              ></v-rating>
-            </div>
+            ></v-rating>
+          </div>
 
-            <v-card-actions>
-              <v-list-item class="grow">
-                <v-list-item-avatar color="grey darken-3">
-                  <v-img
-                    class="elevation-6"
-                    alt=""
-                    src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
-                  ></v-img>
-                </v-list-item-avatar>
+          <v-card-actions>
+            <v-list-item class="grow">
+              <v-list-item-avatar color="grey darken-3">
+                <v-img
+                  class="elevation-6"
+                  alt=""
+                  src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
+                ></v-img>
+              </v-list-item-avatar>
 
-                <v-list-item-content>
-                  <v-list-item-title>{{ item.nama_review }}</v-list-item-title>
-                </v-list-item-content>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.nama_review }}</v-list-item-title>
+              </v-list-item-content>
 
-                <v-row align="center" justify="end">
-                  <v-btn
-                    color="#CACACA"
-                    small
-                    class="mr-2"
-                    @click="editHandler(item)"
-                  >
-                    <v-icon class="mr-1" color="green"> 🗑 </v-icon>
-                  </v-btn>
+              <v-row
+                align="center"
+                justify="end"
+                v-if="item.email_review == email_aktiv"
+              >
+                <v-btn
+                  color="#CACACA"
+                  small
+                  class="mr-2"
+                  @click="editHandler(item)"
+                >
+                  <v-icon class="mr-1" color="green"> 🗑 </v-icon>
+                </v-btn>
 
-                  <v-btn color="#CACACA" small @click="deleteHandler(item.id)">
-                    <v-icon class="mr-1" color="red"> mdi-delete </v-icon>
-                  </v-btn>
-                </v-row>
-              </v-list-item>
-            </v-card-actions>
-          </v-card>
-        </template>
-      </v-data-table>
-    
+                <v-btn color="#CACACA" small @click="deleteHandler(item.id)">
+                  <v-icon class="mr-1" color="red"> mdi-delete </v-icon>
+                </v-btn>
+              </v-row>
+            </v-list-item>
+          </v-card-actions>
+        </v-card>
+      </template>
+    </v-data-table>
 
     <v-dialog v-model="dialog" persistent width="500px">
       <v-card>
@@ -85,32 +88,29 @@
           <v-card-text>
             <v-container>
               <v-text-field
-                v-model="namaLengkap"
+                v-model="form.namaLengkap"
                 label="Nama"
                 :rules="nameRules"
-                :counter="10"
                 disabled
               ></v-text-field>
 
               <v-text-field
-                v-model="email"
+                v-model="form.email"
                 label="Email"
                 :rules="emailRules"
                 disabled
               ></v-text-field>
 
               <v-rating
-              empty-icon="☆"
-              full-icon="★"
-              v-model="form.star_review"
-              color="yellow darken-3"
-              background-color="yellow darken-3"
-              hover
-              large
-              :rules="starRules"
-            ></v-rating>
-
-            
+                empty-icon="☆"
+                full-icon="★"
+                v-model="form.star_review"
+                color="yellow darken-3"
+                background-color="yellow darken-3"
+                hover
+                large
+                :rules="starRules"
+              ></v-rating>
 
               <v-textarea
                 v-model="form.deskripsi_review"
@@ -150,7 +150,6 @@
       >{{ error_message }}
     </v-snackbar>
   </v-main>
-
 </template>
 
 <script>
@@ -167,13 +166,11 @@ export default {
       dialog: false,
       dialogConfirm: false,
 
-      email:localStorage.getItem('email'),
-      namaLengkap:localStorage.getItem('namaLengkap'),
+      email_aktiv: localStorage.getItem("email"),
+      // email: localStorage.getItem("email"),
+      // namaLengkap: localStorage.getItem("namaLengkap"),
 
-      nameRules: [
-        (v) => !!v || "Nama is required",
-        (v) => (v && v.length <= 10) || "Nama must be less than 10 characters",
-      ],
+      nameRules: [(v) => !!v || "Nama is required"],
 
       emailRules: [
         (v) => !!v || "E-mail is required",
@@ -190,9 +187,9 @@ export default {
           text: "",
           align: "start",
           sortable: true,
-          value: "nama_review",
+          value: "namaLengkap",
         },
-        { text: "", value: "email_review" },
+        { text: "", value: "email" },
         { text: "", value: "star_review" },
         { text: "", value: "deskripsi_review" },
         { text: "", value: "actions" },
@@ -200,8 +197,8 @@ export default {
       review: new FormData(),
       reviews: [],
       form: {
-        nama_review: null,
-        email_review: null,
+        namaLengkap: localStorage.getItem("namaLengkap"),
+        email: localStorage.getItem("email"),
         star_review: null,
         deskripsi_review: null,
       },
@@ -209,7 +206,7 @@ export default {
       editId: "",
     };
   },
-  
+
   methods: {
     setForm() {
       this.$refs.form.validate();
@@ -234,13 +231,13 @@ export default {
     },
     save() {
       if (
-        this.form.nama_review != null &&
-        this.form.email_review != null &&
+        this.form.namaLengkap != null &&
+        this.form.email != null &&
         this.form.star_review != null &&
         this.form.deskripsi_review != null
       ) {
-        this.review.append("nama_review", this.form.nama_review);
-        this.review.append("email_review", this.form.email_review);
+        this.review.append("nama_review", this.form.namaLengkap);
+        this.review.append("email_review", this.form.email);
         this.review.append("star_review", this.form.star_review);
         this.review.append("deskripsi_review", this.form.deskripsi_review);
 
@@ -272,8 +269,8 @@ export default {
     //ubah data review
     update() {
       let newData = {
-        nama_review: this.form.nama_review,
-        email_review: this.form.email_review,
+        namaLengkap: this.form.nama_review,
+        email: this.form.email_review,
         star_review: this.form.star_review,
         deskripsi_review: this.form.deskripsi_review,
       };
@@ -334,8 +331,8 @@ export default {
     editHandler(item) {
       this.inputType = "Ubah";
       this.editId = item.id;
-      this.form.nama_review = item.nama_review;
-      this.form.email_review = item.email_review;
+      this.namaLengkap = item.nama_review;
+      this.email = item.email_review;
       this.form.star_review = item.star_review;
       this.form.deskripsi_review = item.deskripsi_review;
       this.dialog = true;
@@ -359,8 +356,8 @@ export default {
     },
     resetForm() {
       this.form = {
-        nama_review: null,
-        email_review: null,
+        namaLengkap: localStorage.getItem("namaLengkap"),
+        email: localStorage.getItem("email"),
         star_review: null,
         deskripsi_review: null,
       };
