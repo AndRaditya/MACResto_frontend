@@ -163,17 +163,10 @@
                             Made with Sweat and Blood.
                         </div>
                     </div>
-                </div>
-                
+                </div>           
         </div>
-    </v-container>
-
-
-
-           
+    </v-container>       
         </v-container>
-
-
     </v-main>
 </template>
 

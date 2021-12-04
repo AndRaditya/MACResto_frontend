@@ -85,29 +85,29 @@
           <v-card-text>
             <v-container>
               <v-text-field
-                v-model="form.nama_review"
+                v-model="namaLengkap"
                 label="Nama"
                 :rules="nameRules"
                 :counter="10"
-                required
+                disabled
               ></v-text-field>
 
               <v-text-field
-                v-model="form.email_review"
+                v-model="email"
                 label="Email"
                 :rules="emailRules"
-                required
+                disabled
               ></v-text-field>
 
               <v-rating
               empty-icon="☆"
               full-icon="★"
-                 v-model="form.star_review"
-                  color="yellow darken-3"
-                  background-color="yellow darken-3"
-                  hover
-                  large
-                  :rules="starRules"
+              v-model="form.star_review"
+              color="yellow darken-3"
+              background-color="yellow darken-3"
+              hover
+              large
+              :rules="starRules"
             ></v-rating>
 
             
@@ -167,11 +167,14 @@ export default {
       dialog: false,
       dialogConfirm: false,
 
+      email:localStorage.getItem('email'),
+      namaLengkap:localStorage.getItem('namaLengkap'),
+
       nameRules: [
         (v) => !!v || "Nama is required",
         (v) => (v && v.length <= 10) || "Nama must be less than 10 characters",
       ],
-      email: "",
+
       emailRules: [
         (v) => !!v || "E-mail is required",
         (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
