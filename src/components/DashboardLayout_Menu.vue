@@ -29,7 +29,6 @@
         <div class="fullheight pa-5" style="margin-top: 150px; padding-top:150px">
             <router-view></router-view>
         </div>
-
     </div>
 </template>
 
