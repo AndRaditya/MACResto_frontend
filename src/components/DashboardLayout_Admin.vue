@@ -18,6 +18,9 @@
                         <li class="nav-item">
                             <a class="nav-link"  @click="btnProfil">Profil</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  @click="btnReview">Review</a>
+                        </li>
                         <li class="nav-item active" style="margin-left: 16px">
                             <a class="nav-link" @click="logout">Keluar</a>
                         </li>
@@ -84,6 +87,12 @@
             btnProfil() {
                 this.$router.push({
                     name: 'ProfileAdmin',
+                });
+               
+            },
+            btnReview() {
+                this.$router.push({
+                    name: 'ReviewAdmin',
                 });
                
             },

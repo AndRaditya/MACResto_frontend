@@ -4,8 +4,6 @@
 
         <v-card-title>
             <v-spacer></v-spacer>
-
-            <v-btn color="success" dark @click="dialog = true"> Tambah</v-btn>
         </v-card-title>
 
         <v-data-table :headers="headers" :items="reviews" :search="search">
@@ -19,7 +17,7 @@
 
                     <v-card-text>
                         <h4 style="color: black">
-                           " {{ item.deskripsi_review }} " 
+                            "{{ item.deskripsi_review }}"
                         </h4>
                     </v-card-text>
 
@@ -42,18 +40,7 @@
                                 </h6>
                             </v-list-item-content>
 
-                            <!-- <v-row align="center" justify="end" v-if="item.email_review == email_aktiv">
-                                <v-btn small class="mr-2" @click="editHandler(item)">edit</v-btn>
-                                <v-btn color="#CACACA" small @click="editHandler(item)">
-                                    <v-icon class="mr-1" color="green"> mdi-pencil </v-icon>
-                                </v-btn>
-
-                                <v-btn color="#CACACA" small @click="deleteHandler(item.id)">
-                                    <v-icon class="mr-1" color="red"> mdi-delete </v-icon>
-                                </v-btn>
-                            </v-row> -->
-
-                            <template align="center" justify="end" v-if="item.email_review == email_aktiv">
+                            <template align="center" justify="end">
                                 <v-btn color="primary" small class="mr-2" @click="editHandler(item)" >
                                     <v-icon class="mr-1" color="white"> mdi-pencil </v-icon>
                                 </v-btn>
@@ -61,9 +48,9 @@
                                     <v-icon class="mr-1" color="white"> mdi-delete </v-icon>
                                 </v-btn>
                             </template>
-
                         </v-list-item>
                     </v-card-actions>
+                    
                 </v-card>
             </template>
         </v-data-table>
@@ -76,10 +63,10 @@
                 <v-form ref="form" v-model="valid" lazy-validation>
                     <v-card-text>
                         <v-container>
-                            <v-text-field v-model="form.namaLengkap" label="Nama" :rules="nameRules" disabled>
+                            <v-text-field v-model="form.nama_review" label="Nama" :rules="nameRules" disabled>
                             </v-text-field>
 
-                            <v-text-field v-model="form.email" label="Email" :rules="emailRules" disabled>
+                            <v-text-field v-model="form.email_review" label="Email" :rules="emailRules" disabled>
                             </v-text-field>
 
                             <v-rating empty-icon="☆" full-icon="★" v-model="form.star_review" color="yellow darken-3"
@@ -121,7 +108,7 @@
 
 <script>
     export default {
-        name: "Review",
+        name: "ReviewAdmin",
         data() {
             return {
                 inputType: "Tambah",
@@ -133,7 +120,7 @@
                 dialog: false,
                 dialogConfirm: false,
 
-                email_aktiv: localStorage.getItem("email"),
+                // email_aktiv: localStorage.getItem("email"),
                 // email: localStorage.getItem("email"),
                 // namaLengkap: localStorage.getItem("namaLengkap"),
 
@@ -153,11 +140,11 @@
                         text: "",
                         align: "start",
                         sortable: true,
-                        value: "namaLengkap",
+                        value: "nama_review",
                     },
                     {
                         text: "",
-                        value: "email"
+                        value: "email_review"
                     },
                     {
                         text: "",
@@ -175,8 +162,8 @@
                 review: new FormData(),
                 reviews: [],
                 form: {
-                    namaLengkap: localStorage.getItem("namaLengkap"),
-                    email: localStorage.getItem("email"),
+                    nama_review: null,
+                    email_review: null,
                     star_review: null,
                     deskripsi_review: null,
                 },
@@ -186,14 +173,14 @@
         },
 
         methods: {
-            setForm() {
-                this.$refs.form.validate();
-                if (this.inputType !== "Tambah") {
-                    this.update();
-                } else {
-                    this.save();
-                }
-            },
+            // setForm() {
+            //     this.$refs.form.validate();
+            //     if (this.inputType !== "Tambah") {
+            //         this.update();
+            //     } else {
+            //         this.save();
+            //     }
+            // },
             //read data reviews
             readData() {
                 var url = this.$api + "/review";
@@ -207,48 +194,48 @@
                         this.reviews = response.data.data;
                     });
             },
-            save() {
-                if (
-                    this.form.namaLengkap != null &&
-                    this.form.email != null &&
-                    this.form.star_review != null &&
-                    this.form.deskripsi_review != null
-                ) {
-                    this.review.append("nama_review", this.form.namaLengkap);
-                    this.review.append("email_review", this.form.email);
-                    this.review.append("star_review", this.form.star_review);
-                    this.review.append("deskripsi_review", this.form.deskripsi_review);
+            // save() {
+            //     if (
+            //         this.form.namaLengkap != null &&
+            //         this.form.email != null &&
+            //         this.form.star_review != null &&
+            //         this.form.deskripsi_review != null
+            //     ) {
+            //         this.review.append("nama_review", this.form.namaLengkap);
+            //         this.review.append("email_review", this.form.email);
+            //         this.review.append("star_review", this.form.star_review);
+            //         this.review.append("deskripsi_review", this.form.deskripsi_review);
 
-                    var url = this.$api + "/review/";
-                    this.load = true;
-                    this.$http
-                        .post(url, this.review, {
-                            headers: {
-                                Authorization: "Bearer " + localStorage.getItem("token"),
-                            },
-                        })
-                        .then((response) => {
-                            this.error_message = response.data.message;
-                            this.color = "green";
-                            this.snackbar = true;
-                            this.load = true;
-                            this.close();
-                            this.readData(); // baca data
-                            this.resetForm();
-                        })
-                        .catch((error) => {
-                            this.error_message = error.response.data.message;
-                            this.color = "red";
-                            this.snackbar = true;
-                            this.load = false;
-                        });
-                }
-            },
+            //         var url = this.$api + "/review/";
+            //         this.load = true;
+            //         this.$http
+            //             .post(url, this.review, {
+            //                 headers: {
+            //                     Authorization: "Bearer " + localStorage.getItem("token"),
+            //                 },
+            //             })
+            //             .then((response) => {
+            //                 this.error_message = response.data.message;
+            //                 this.color = "green";
+            //                 this.snackbar = true;
+            //                 this.load = true;
+            //                 this.close();
+            //                 this.readData(); // baca data
+            //                 this.resetForm();
+            //             })
+            //             .catch((error) => {
+            //                 this.error_message = error.response.data.message;
+            //                 this.color = "red";
+            //                 this.snackbar = true;
+            //                 this.load = false;
+            //             });
+            //     }
+            // },
             //ubah data review
             update() {
                 let newData = {
-                    namaLengkap: this.form.nama_review,
-                    email: this.form.email_review,
+                    nama_review: this.form.nama_review,
+                    email_review: this.form.email_review,
                     star_review: this.form.star_review,
                     deskripsi_review: this.form.deskripsi_review,
                 };
@@ -309,8 +296,8 @@
             editHandler(item) {
                 this.inputType = "Ubah";
                 this.editId = item.id;
-                this.namaLengkap = item.nama_review;
-                this.email = item.email_review;
+                this.form.nama_review = item.nama_review;
+                this.form.email_review = item.email_review;
                 this.form.star_review = item.star_review;
                 this.form.deskripsi_review = item.deskripsi_review;
                 this.dialog = true;
@@ -334,8 +321,8 @@
             },
             resetForm() {
                 this.form = {
-                    namaLengkap: localStorage.getItem("namaLengkap"),
-                    email: localStorage.getItem("email"),
+                    namaLengkap: null,
+                    email: null,
                     star_review: null,
                     deskripsi_review: null,
                 };

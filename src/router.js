@@ -67,6 +67,12 @@ const router = new VueRouter({
                     component: importComponent('Dashboard'),
                 },
                 {
+                    path: '/reviewAdmin',
+                    name: 'ReviewAdmin',
+                    meta: { title: 'ReviewAdmin' },
+                    component: importComponent('Review/reviewPageAdmin'),
+                },
+                {
                     path: '/profileAdmin',
                     name: 'ProfileAdmin',
                     meta: { title: 'ProfileAdmin' },
