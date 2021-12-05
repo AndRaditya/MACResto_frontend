@@ -28,6 +28,12 @@ const router = new VueRouter({
                     component: importComponent('Profile/profilePage'),
                 },
                 {
+                    path: '/reservasi',
+                    name: 'Reservasi',
+                    meta: { title: 'Reservasi' },
+                    component: importComponent('Reservasi/reservasiPage'),
+                },
+                {
                     path: '/menu',
                     name: 'Menu',
                     meta: { title: 'Menu' },
@@ -40,7 +46,13 @@ const router = new VueRouter({
             meta: { requiresAuth: true},
             component: importComponent('DashboardLayout_Menu'),
             children: [
-                 {
+                {
+                    path: '/pesanMenu',
+                    name: 'Pesan Menu',
+                    meta: { title: 'Pesan Menu' },
+                    component: importComponent('Pesan/pesanPage'),
+                },
+                {
                     path: '/review',
                     name: 'Review',
                     meta: { title: 'Review' },
