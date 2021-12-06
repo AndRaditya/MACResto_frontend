@@ -1,46 +1,64 @@
 <template>
     <v-main class="list">
-        <h3 class="text-h3" font-weight-medium mb-5>Reviews</h3>
+        <h3 class="text-h3" font-weight-medium mb-5 style="margin-top: 150px">Reservasi Admin</h3>
 
-        <v-card-title>
-            <v-spacer></v-spacer>
-        </v-card-title>
 
-        <v-data-table :headers="headers" :items="reviews" :search="search">
+        <v-data-table :headers="headers" :items="reservations" :search="search">
             <template v-slot:[`item`]="{ item }" class="col-sm">
                 <v-card color="#FEF9EF" dark max-width="850" style="margin: 30px" shaped outlined>
 
                     <v-card-title>
                         <v-icon color="#FFFFFF" large left> </v-icon>
-                        <h6 style="color: black; font-weight: bold">{{item.email_review}}</h6>
+                        <h6 style="color: black; font-weight: bold">{{item.email_reservator}}</h6>
                     </v-card-title>
-
-                    <v-card-text>
-                        <h4 style="color: black">
-                            "{{ item.deskripsi_review }}"
-                        </h4>
-                    </v-card-text>
-
-                    <div style="margin-top: -20px">
-                        <v-rating v-model="item.star_review" color="yellow darken-3" background-color="yellow darken-3"
-                            half-increments large empty-icon="☆" full-icon="★"></v-rating>
-                    </div>
 
                     <v-card-actions>
                         <v-list-item class="grow">
-                            <v-list-item-avatar color="grey darken-3">
-                                <v-img class="elevation-6" alt=""
-                                    src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light">
-                                </v-img>
-                            </v-list-item-avatar>
+                            <v-list-item-content>
+                                <strong style="color: black;">
+                                    Nama
+                                </strong>
+                            </v-list-item-content>
 
                             <v-list-item-content>
-                                <h6 style="color: black; margin-left: -400px">
-                                    {{ item.nama_review }}
+                                <strong style="color: black;">
+                                    Nomor Telepon
+                                </strong>
+                            </v-list-item-content>
+
+                            <v-list-item-content>
+                                <strong style="color: black;">
+                                    Nomor Meja
+                                </strong>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-card-actions>
+
+                    <v-card-actions>
+                        <v-list-item class="grow">
+                            <v-list-item-content>
+                                <h6 style="color: black;">
+                                    {{ item.nama_reservator }}
                                 </h6>
                             </v-list-item-content>
 
-                            <template align="center" justify="end">
+                            <v-list-item-content>
+                                <h6 style="color: black;">
+                                    {{ item.no_telp }}
+                                </h6>
+                            </v-list-item-content>
+
+                            <v-list-item-content>
+                                <h6 style="color: black;">
+                                    {{ item.no_meja }}
+                                </h6>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-card-actions>
+
+                    <v-card-actions>
+                        <v-list-item class="grow">
+                            <template align="right" justify="end">
                                 <v-btn color="primary" small class="mr-2" @click="editHandler(item)">
                                     <v-icon class="mr-1" color="white"> mdi-pencil </v-icon>
                                 </v-btn>
@@ -58,22 +76,19 @@
         <v-dialog v-model="dialog" persistent width="1000px" content-class="elevation-0">
             <v-card style="margin-top: 150px">
                 <v-card-title>
-                    <span class="headline">{{ formTitle }} Review</span>
+                    <span class="headline">{{ formTitle }} Reservasi</span>
                 </v-card-title>
                 <v-form ref="form" v-model="valid" lazy-validation>
                     <v-card-text>
                         <v-container>
-                            <v-text-field v-model="form.nama_review" label="Nama" :rules="nameRules" disabled>
+                            <v-text-field v-model="form.nama_reservator" label="Nama" :rules="nameRules" disabled>
                             </v-text-field>
-
-                            <v-text-field v-model="form.email_review" label="Email" :rules="emailRules" disabled>
+                            <v-text-field v-model="form.email_reservator" label="Email" :rules="emailRules" disabled>
                             </v-text-field>
-
-                            <v-rating empty-icon="☆" full-icon="★" v-model="form.star_review" color="yellow darken-3"
-                                background-color="yellow darken-3" hover large :rules="starRules"></v-rating>
-
-                            <v-textarea v-model="form.deskripsi_review" label="Deskripsi" required
-                                :rules="deskripsiRules"></v-textarea>
+                            <v-text-field v-model="form.no_telp" label="No. Telepon" required disabled></v-text-field>
+                            <v-select v-model="form.no_meja"
+                                :items="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']" label="No. Meja" required>
+                            </v-select>
                         </v-container>
                     </v-card-text>
 
@@ -86,7 +101,7 @@
             </v-card>
         </v-dialog>
 
-        <v-dialog v-model="dialogConfirm" persistent max-width="400px">
+        <v-dialog v-model="dialogConfirm" persistent width="400px">
             <v-card>
                 <v-card-title>
                     <span class="headline">Warning!</span>
@@ -108,7 +123,7 @@
 
 <script>
     export default {
-        name: "ReviewAdmin",
+        name: "ReservasiAdmin",
         data() {
             return {
                 inputType: "Tambah",
@@ -124,48 +139,34 @@
                 // email: localStorage.getItem("email"),
                 // namaLengkap: localStorage.getItem("namaLengkap"),
 
-                nameRules: [(v) => !!v || "Nama is required"],
-
-                emailRules: [
-                    (v) => !!v || "E-mail is required",
-                    (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-                ],
-                deskripsiRules: [
-                    (v) => !!v || "Deskripsi is required",
-                    (v) =>
-                    (v && v.length <= 100) ||
-                    "Deskripsi must be less than 100 characters",
-                ],
                 headers: [{
                         text: "",
-                        align: "start",
-                        sortable: true,
-                        value: "nama_review",
+                        value: "nama_reservator",
                     },
                     {
                         text: "",
-                        value: "email_review"
+                        value: "email_reservator"
                     },
                     {
                         text: "",
-                        value: "star_review"
+                        value: "no_telp"
                     },
                     {
                         text: "",
-                        value: "deskripsi_review"
+                        value: "no_meja"
                     },
                     {
                         text: "",
                         value: "actions"
                     },
                 ],
-                review: new FormData(),
-                reviews: [],
+                reservation: new FormData,
+                reservations: [],
                 form: {
-                    nama_review: null,
-                    email_review: null,
-                    star_review: null,
-                    deskripsi_review: null,
+                    nama_reservator: null,
+                    email_reservator: null,
+                    no_telp: null,
+                    no_meja: null,
                 },
                 deleteId: "",
                 editId: "",
@@ -173,8 +174,17 @@
         },
 
         methods: {
+            setForm() {
+                this.$refs.form.validate();
+                if (this.inputType !== "Tambah") {
+                    this.update();
+                } else {
+                    this.save();
+                }
+            },
+            //read data reviews
             readData() {
-                var url = this.$api + "/review";
+                var url = this.$api + "/reservation";
                 this.$http
                     .get(url, {
                         headers: {
@@ -182,56 +192,20 @@
                         },
                     })
                     .then((response) => {
-                        this.reviews = response.data.data;
+                        this.reservations = response.data.data;
                     });
             },
-            // save() {
-            //     if (
-            //         this.form.namaLengkap != null &&
-            //         this.form.email != null &&
-            //         this.form.star_review != null &&
-            //         this.form.deskripsi_review != null
-            //     ) {
-            //         this.review.append("nama_review", this.form.namaLengkap);
-            //         this.review.append("email_review", this.form.email);
-            //         this.review.append("star_review", this.form.star_review);
-            //         this.review.append("deskripsi_review", this.form.deskripsi_review);
-
-            //         var url = this.$api + "/review/";
-            //         this.load = true;
-            //         this.$http
-            //             .post(url, this.review, {
-            //                 headers: {
-            //                     Authorization: "Bearer " + localStorage.getItem("token"),
-            //                 },
-            //             })
-            //             .then((response) => {
-            //                 this.error_message = response.data.message;
-            //                 this.color = "green";
-            //                 this.snackbar = true;
-            //                 this.load = true;
-            //                 this.close();
-            //                 this.readData(); // baca data
-            //                 this.resetForm();
-            //             })
-            //             .catch((error) => {
-            //                 this.error_message = error.response.data.message;
-            //                 this.color = "red";
-            //                 this.snackbar = true;
-            //                 this.load = false;
-            //             });
-            //     }
-            // },
+            
             //ubah data review
             update() {
                 let newData = {
-                    nama_review: this.form.namaLengkap,
-                    email_review: this.form.email,
-                    star_review: this.form.star_review,
-                    deskripsi_review: this.form.deskripsi_review,
+                    nama_reservator: this.form.nama_reservator,
+                    email_reservator: this.form.email_reservator,
+                    no_telp: this.form.no_telp,
+                    no_meja: this.form.no_meja,
                 };
-                
-                var url = this.$api + "/review/" + this.editId;
+
+                var url = this.$api + "/reservation/" + this.editId;
                 this.load = true;
                 this.$http
                     .put(url, newData, {
@@ -259,7 +233,7 @@
             //hapus data produk
             deleteData() {
                 //menghapus data
-                var url = this.$api + "/review/" + this.deleteId;
+                var url = this.$api + "/reservation/" + this.deleteId;
                 this.load = true;
                 this.$http
                     .delete(url, {
@@ -287,10 +261,10 @@
             editHandler(item) {
                 this.inputType = "Ubah";
                 this.editId = item.id;
-                this.form.nama_review = item.nama_review;
-                this.form.email_review = item.email_review;
-                this.form.star_review = item.star_review;
-                this.form.deskripsi_review = item.deskripsi_review;
+                this.form.nama_reservator = item.nama_reservator;
+                this.form.email_reservator = item.email_reservator;
+                this.form.no_telp = item.no_telp;
+                this.form.no_meja = item.no_meja;
                 this.dialog = true;
             },
             deleteHandler(id) {
@@ -312,10 +286,10 @@
             },
             resetForm() {
                 this.form = {
-                    nama_review: null,
-                    email_review: null,
-                    star_review: null,
-                    deskripsi_review: null,
+                    nama_reservator: null,
+                    email_reservator: null,
+                    no_telp: null,
+                    no_meja: null,
                 };
             },
         },

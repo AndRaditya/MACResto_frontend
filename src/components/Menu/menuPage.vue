@@ -262,7 +262,7 @@
 
             btnReview() {
                 this.$router.push({
-                    name: 'Review',
+                    name: 'Pesan',
                 });
             },
 

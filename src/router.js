@@ -56,6 +56,14 @@ const router = new VueRouter({
             },
             component: importComponent("DashboardLayout_Menu"),
             children: [{
+                    path: "/dashboard_menu",
+                    name: "DashboardMenu",
+                    meta: {
+                        title: "DashboardMenu"
+                    },
+                    component: importComponent("Dashboard"),
+                },
+                {
                     path: "/pesanMenu",
                     name: "Pesan",
                     meta: {
@@ -71,14 +79,7 @@ const router = new VueRouter({
                     },
                     component: importComponent("Review/reviewPage"),
                 },
-                {
-                    path: "/dashboard_menu",
-                    name: "DashboardMenu",
-                    meta: {
-                        title: "DashboardMenu"
-                    },
-                    component: importComponent("Dashboard"),
-                },
+
             ],
         },
 
@@ -111,6 +112,14 @@ const router = new VueRouter({
                         title: "ReviewAdmin"
                     },
                     component: importComponent("Review/reviewPageAdmin"),
+                },
+                {
+                    path: "/reservasiAdmin",
+                    name: "ReservasiAdmin",
+                    meta: {
+                        title: "ReservasiAdmin"
+                    },
+                    component: importComponent("Reservasi/reservasiPageAdmin"),
                 },
             ],
         },
