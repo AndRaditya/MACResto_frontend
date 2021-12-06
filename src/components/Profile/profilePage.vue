@@ -11,7 +11,7 @@
                                 <v-form v-model="valid" ref="form">
                                     <v-text-field label="Nama" v-model="namaLengkap" :rules="nameRules" required>
                                     </v-text-field>
-                                    <v-text-field label="E-mail" v-model="email" :rules="emailRules" required>
+                                    <v-text-field label="E-mail" v-model="email" :rules="emailRules" required disabled>
                                     </v-text-field>
                                     <v-text-field label="Username" v-model="username" :rules="usernameRules" required>
                                     </v-text-field>

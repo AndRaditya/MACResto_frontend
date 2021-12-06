@@ -71,6 +71,10 @@
                         title: "ProfileAdmin",
                         to: "/profileAdmin"
                     },
+                    {
+                        title: "ReviewAdmin",
+                        to: "/reviewAdmin"
+                    },
                     // {title: "Course", to: "/course"},
                 ],
             };

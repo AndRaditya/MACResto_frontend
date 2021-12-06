@@ -1,10 +1,12 @@
 <template>
     <v-main class="list">
-        <h3 class="text-h3" font-weight-medium mb-5>Reviews</h3>
+        <h3 class="text-h3" font-weight-medium mb-5 style="margin-top: 150px">Reservasi</h3>
 
+        <!-- 
         <v-card-title>
             <v-spacer></v-spacer>
-        </v-card-title>
+            <v-btn color="success" dark @click="dialog = true"> Tambah</v-btn>
+        </v-card-title> -->
 
         <v-data-table :headers="headers" :items="reviews" :search="search">
             <template v-slot:[`item`]="{ item }" class="col-sm">
@@ -17,7 +19,7 @@
 
                     <v-card-text>
                         <h4 style="color: black">
-                            "{{ item.deskripsi_review }}"
+                            " {{ item.deskripsi_review }} "
                         </h4>
                     </v-card-text>
 
@@ -41,16 +43,16 @@
                             </v-list-item-content>
 
                             <template align="center" justify="end">
-                                <v-btn color="primary" small class="mr-2" @click="editHandler(item)" >
+                                <v-btn color="primary" small class="mr-2" @click="editHandler(item)">
                                     <v-icon class="mr-1" color="white"> mdi-pencil </v-icon>
                                 </v-btn>
                                 <v-btn color="error" small @click="deleteHandler(item.id)">
                                     <v-icon class="mr-1" color="white"> mdi-delete </v-icon>
                                 </v-btn>
                             </template>
+
                         </v-list-item>
                     </v-card-actions>
-                    
                 </v-card>
             </template>
         </v-data-table>
@@ -108,7 +110,7 @@
 
 <script>
     export default {
-        name: "ReviewAdmin",
+        name: "Review",
         data() {
             return {
                 inputType: "Tambah",
@@ -173,14 +175,14 @@
         },
 
         methods: {
-            // setForm() {
-            //     this.$refs.form.validate();
-            //     if (this.inputType !== "Tambah") {
-            //         this.update();
-            //     } else {
-            //         this.save();
-            //     }
-            // },
+            setForm() {
+                this.$refs.form.validate();
+                if (this.inputType !== "Tambah") {
+                    this.update();
+                } else {
+                    this.save();
+                }
+            },
             //read data reviews
             readData() {
                 var url = this.$api + "/review";
@@ -321,8 +323,8 @@
             },
             resetForm() {
                 this.form = {
-                    namaLengkap: null,
-                    email: null,
+                    nama_review: null,
+                    email_review: null,
                     star_review: null,
                     deskripsi_review: null,
                 };

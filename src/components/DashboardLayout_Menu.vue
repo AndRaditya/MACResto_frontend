@@ -63,10 +63,10 @@
                         title: "DashboardMenu",
                         to: "/dashboard_menu"
                     },
-                    // {
-                    //     title: "Profile",
-                    //     to: "/profile"
-                    // },
+                    {
+                        title: "Pesan",
+                        to: "/pesanMenu"
+                    },
                     {
                         title: "Review",
                         to: "/review"
@@ -78,7 +78,7 @@
         methods: {
             btnPesanMenu() {
                 this.$router.push({
-                    name: 'PesanMenu',
+                    name: 'Pesan',
                 });
                 
             },
