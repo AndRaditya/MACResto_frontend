@@ -21,6 +21,7 @@
                 </v-layout>
             </v-form> 
         </v-card>
+        
         <v-dialog v-model="dialog" persistent max-width="600px">
             <v-card>
                 <v-card-title>
@@ -43,6 +44,8 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
+
+
 
         <v-dialog v-model="dialogConfirm" persistent max-width="400px">
             <v-card>
@@ -74,6 +77,10 @@ export default {
             search: null,
             dialog: false,
             dialogConfirm: false,
+
+            nama_reservator: localStorage.getItem('namaLengkap'),
+            no_telp: localStorage.getItem('noTelp'),
+
             headers: [
                 { text: "Nama", value: "nama_reservator" },
                 { text: "No. Telepon", value:'no_telp' },
@@ -83,8 +90,8 @@ export default {
             reservation: new FormData,
             reservations: [],
             form: {
-                nama_reservator: null,
-                no_telp: null,
+                nama_reservator: localStorage.getItem('namaLengkap'),
+                no_telp: localStorage.getItem('noTelp'),
                 no_meja: null,
             },
             deleteId: '',
