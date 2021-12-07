@@ -206,7 +206,7 @@
                     this.reservation.append("no_telp", this.form.noTelp);
                     this.reservation.append("no_meja", this.form.no_meja);
 
-                    var url = this.$api + "/reservation/";
+                    var url = this.$api + "/reservation";
                     this.load = true;
                     this.$http
                         .post(url, this.reservation, {

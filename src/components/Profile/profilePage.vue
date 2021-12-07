@@ -2,7 +2,7 @@
     <v-main class="list" style="margin-top: 20px">
         
         <h3 class="text-h3 font-weight-medium mb-5" style="margin-top: 150px">Profile</h3>
-        <v-container fluid fill-height class="posisinya" style="margin-top: -50px">
+        <v-container fluid fill-height class="posisinya" style="margin-top: -50px !important">
             <v-layout flex align-center justify-center>
                 <v-flex xs12 sm6 elevation-6>
                     <v-card>
@@ -23,7 +23,7 @@
                                             <v-btn class="mr-2" @click="update" color="success"
                                                 :class=" { 'grey darken-1 white--text' : valid, disabled: !valid }">
                                                 Edit Data </v-btn>
-                                            <v-btn @click="resetForm" class="red darken-3 white--text">Clear</v-btn>
+                                            <!-- <v-btn @click="resetForm" class="red darken-3 white--text">Clear</v-btn> -->
                                         </v-layout>
                                     </v-layout>
                                 </v-form>
@@ -39,7 +39,7 @@
     </v-main>
 </template>
 
-<style>
+<style scoped>
     @import url("https://fonts.googleapis.com/css?family=Jolly%20Lodger");
    
     .grey--text {

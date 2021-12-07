@@ -4,7 +4,7 @@
             <v-layout flex align-center justify-center>
                 <v-flex sm12 sm4 elevation-6>
                     <v-card>
-                        <h1 style="padding-top: 50px; font-family: Anton, sans-serif">
+                        <h1 style="padding-top: 50px; font-family: Anton, sans-serif; font-size: 35px !important">
                             Daftar Sekarang
                         </h1>
 
@@ -14,7 +14,7 @@
                                 <v-form v-model="valid" ref="form">
                                     <div class="mb3">
                                         <p class="text-start" style="margin-bottom: 5px;">
-                                            <strong>Nama Lengkap</strong>
+                                            <strong style="font-size: 15px !important">Nama Lengkap</strong>
                                         </p>
                                         <v-text-field v-model="namaLengkap" :rules="namaLengkapRules" required filled
                                             label="Masukkan Nama Lengkap"></v-text-field>
@@ -22,7 +22,7 @@
 
                                     <div class="mb3">
                                         <p class="text-start" style="margin-bottom: 5px;">
-                                            <strong>E-Mail</strong>
+                                            <strong style="font-size: 15px !important">E-Mail</strong>
                                         </p>
                                         <v-text-field v-model="email" :rules="emailRules" required filled
                                             label="Masukkan E-Mail">
@@ -31,7 +31,7 @@
 
                                     <div class="mb3">
                                         <p class="text-start" style="margin-bottom: 5px;">
-                                            <strong>Nomor Telepon</strong>
+                                            <strong style="font-size: 15px !important">Nomor Telepon</strong>
                                         </p>
                                         <v-text-field filled v-model="noTelp" :rules="noTelpRules" required
                                             label="Masukkan Nomor Telepon">
@@ -40,7 +40,7 @@
 
                                     <div class="mb3">
                                         <p class="text-start" style="margin-bottom: 5px;">
-                                            <strong>Username</strong>
+                                            <strong style="font-size: 15px !important">Username</strong>
                                         </p>
                                         <v-text-field filled v-model="username" :rules="usernameRules" required
                                             label="Masukkan Username">
@@ -49,7 +49,7 @@
 
                                     <div class="mb3">
                                         <p class="text-start" style="margin-bottom: 5px;">
-                                            <strong>Password</strong>
+                                            <strong style="font-size: 15px !important">Password</strong>
                                         </p>
                                         <v-text-field filled v-model="password" type="password" min="8"
                                             :rules="passwordRules" counter required label="Masukkan Password">
@@ -92,7 +92,7 @@
 </template>
 
 
-<style>
+<style scoped>
     @import url("https://fonts.googleapis.com/css?family=Jolly%20Lodger");
 
     .posisinya {

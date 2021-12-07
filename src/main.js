@@ -7,7 +7,7 @@ import axios from 'axios';
 Vue.config.productionTip = false
 
 Vue.prototype.$http = axios; //code menggunakan axios
-Vue.prototype.$api = 'http://127.0.0.1:8000/api'; //link backend
+Vue.prototype.$api = 'https://pw-backend.mac-resto.com/api'; //link backend
 
 new Vue({
   vuetify,

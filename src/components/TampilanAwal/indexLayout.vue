@@ -33,7 +33,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
     fieldset {
         width: fit-content;
     }

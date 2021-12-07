@@ -165,7 +165,7 @@
     </v-main>
 </template>
 
-<style>
+<style scoped>
     @import url("https://fonts.googleapis.com/css?family=Jolly%20Lodger");
 
     .grey--text {

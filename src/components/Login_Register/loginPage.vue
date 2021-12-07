@@ -5,13 +5,13 @@
                 <v-flex xs12 sm6 elevation-6>
                     <v-card>
                         <h1 style="font-family: Anton, sans-serif; padding-top: 30px">Masuk</h1>
-                        <img src="../Images/login.jpeg" style="width: 150px" />
+                        <img src="../Images/login.jpeg" style="width: 150px; font-size: 35px !important"/>
                         <v-card-text class="pt-4">
                             <div>
                                 <v-form v-model="valid" ref="form">
                                     <div class="mb3">
-                                        <p class="text-start" style="margin-bottom: 5px;">
-                                            <strong>E-Mail</strong>
+                                        <p class="text-start" style="margin-bottom: 5px;"> 
+                                            <strong style="font-size: 15px !important">E-Mail</strong>
                                         </p>
                                         <v-text-field v-model="email" :rules="emailRules" required filled
                                             label="Masukkan E-Mail">
@@ -20,7 +20,7 @@
 
                                     <div class="mb3">
                                         <p class="text-start" style="margin-bottom: 5px;">
-                                            <strong>Password</strong>
+                                            <strong style="font-size: 15px !important">Password</strong>
                                         </p>
                                         <v-text-field filled v-model="password" type="password" min="8"
                                             :rules="passwordRules" counter required label="Masukkan Password">
@@ -58,7 +58,7 @@
 </template>
 
 
-<style>
+<style scoped>
     @import url("https://fonts.googleapis.com/css?family=Jolly%20Lodger");
    
   

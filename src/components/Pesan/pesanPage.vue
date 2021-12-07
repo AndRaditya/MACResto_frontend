@@ -170,7 +170,7 @@
                     this.order.append("minuman", this.form.minuman);
                     this.order.append("jumlah_minuman", this.form.jumlah_minuman);
 
-                    var url = this.$api + "/order/";
+                    var url = this.$api + "/order";
                     this.load = true;
                     this.$http
                         .post(url, this.order, {

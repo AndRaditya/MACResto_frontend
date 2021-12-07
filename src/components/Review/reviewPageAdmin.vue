@@ -57,8 +57,8 @@
             </template>
         </v-data-table>
 
-        <v-dialog v-model="dialog" persistent width="1000px" content-class="elevation-0">
-            <v-card style="margin-top: 150px">
+        <v-dialog v-model="dialog" persistent width="1000px" content-class="elevation-0" style="margin-top: 150px">
+            <v-card>
                 <v-card-title>
                     <span class="headline">{{ formTitle }} Review</span>
                 </v-card-title>
@@ -196,43 +196,6 @@
                         this.reviews = response.data.data;
                     });
             },
-            // save() {
-            //     if (
-            //         this.form.namaLengkap != null &&
-            //         this.form.email != null &&
-            //         this.form.star_review != null &&
-            //         this.form.deskripsi_review != null
-            //     ) {
-            //         this.review.append("nama_review", this.form.namaLengkap);
-            //         this.review.append("email_review", this.form.email);
-            //         this.review.append("star_review", this.form.star_review);
-            //         this.review.append("deskripsi_review", this.form.deskripsi_review);
-
-            //         var url = this.$api + "/review/";
-            //         this.load = true;
-            //         this.$http
-            //             .post(url, this.review, {
-            //                 headers: {
-            //                     Authorization: "Bearer " + localStorage.getItem("token"),
-            //                 },
-            //             })
-            //             .then((response) => {
-            //                 this.error_message = response.data.message;
-            //                 this.color = "green";
-            //                 this.snackbar = true;
-            //                 this.load = true;
-            //                 this.close();
-            //                 this.readData(); // baca data
-            //                 this.resetForm();
-            //             })
-            //             .catch((error) => {
-            //                 this.error_message = error.response.data.message;
-            //                 this.color = "red";
-            //                 this.snackbar = true;
-            //                 this.load = false;
-            //             });
-            //     }
-            // },
             //ubah data review
             update() {
                 let newData = {

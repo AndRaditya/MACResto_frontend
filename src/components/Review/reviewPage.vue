@@ -207,7 +207,7 @@
                     this.review.append("star_review", this.form.star_review);
                     this.review.append("deskripsi_review", this.form.deskripsi_review);
 
-                    var url = this.$api + "/review/";
+                    var url = this.$api + "/review";
                     this.load = true;
                     this.$http
                         .post(url, this.review, {
