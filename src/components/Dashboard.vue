@@ -47,7 +47,7 @@
 
         <div>
             <div align="center">
-                <div class="col-xxl-7" id="body-profile">
+                <div class="col-xxl-7 col-xxl-10 col-xxl-5" id="body-profile">
                     <div class="container" style="margin-bottom: 48px; margin-top: 4px" id="awalanProfile">
                         <div>
                             <h2 class="header" align="center" style="padding-top: 14px">Tentang Kami</h2>
@@ -109,7 +109,7 @@
    </div>
 </template>
 
-<style>
+<style scoped>
     @import './css/styleBerandaMenu.css';
     @import './css/navbar.css';
     @import './css/tampilanAwal.css';

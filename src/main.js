@@ -9,6 +9,7 @@ Vue.config.productionTip = false
 Vue.prototype.$http = axios; //code menggunakan axios
 Vue.prototype.$api = 'https://pw-backend.mac-resto.com/api'; //link backend
 
+
 new Vue({
   vuetify,
   router,
